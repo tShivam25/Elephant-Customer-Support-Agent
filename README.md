@@ -2,29 +2,50 @@
 
 *Because an Elephant never forgets.*
 
+**Created for the Hack with Hyderabad 3.0 Hackathon**
+
 Elephant is a next-generation customer support AI designed for a SaaS billing/invoicing company. It integrates **Hindsight by Vectorize** to build an adaptive, memory-augmented intelligence that gets smarter with every customer interaction.
 
-## Step 1 - The Business Problem
+---
 
-**Users:** Tier-1 and Tier-2 support agents, and Customers.
+## 🛑 The Problem Statement
+Traditional support chatbots and modern LLM agents suffer from "goldfish memory." 
+Instead of building AI that forgets conversations, the industry needs agents that demonstrate persistent memory and learn from past interactions. 
 
-**The Problem:** 
-Traditional support chatbots and even modern LLM agents suffer from "goldfish memory." Customers are forced to repeat their problems, agents suggest fixes that have already failed in the past, and personal preferences (like contact methods or tone) are forgotten between sessions.
+Currently, customers are forced to repeat their problems, agents suggest fixes that have already failed in the past, and personal preferences (like contact methods or tone) are completely forgotten between sessions.
 
-**The Solution:**
-ResolveMind uses **Hindsight** to actively maintain a long-term memory bank for every customer. 
+## 💡 Our Proposed Solution
+**Elephant** solves this by acting as a Customer Support Agent that **remembers a customer's full history:** past tickets, known issues, their environment, their frustration level, and what solutions worked before. 
+
+Nothing angers a customer more than repeating their story. By utilizing a persistent memory layer, our agent transforms the entire support experience.
 - **Recall:** It pulls relevant history (past tickets, attempted fixes, outcomes) before answering.
 - **Avoid Repetition:** It knows if a fix failed before and intelligently escalates instead of frustrating the user.
 - **Retain:** After every conversation, it extracts structured facts (issue, fix, outcome) and stores them in Hindsight to improve future interactions.
 
-## Architecture
+---
+
+## 🛠 Technology & Resources Used
+
+This project heavily utilizes the following technologies required by the hackathon:
+
+- **Hindsight by Vectorize** (Memory Layer)
+  - Documentation: [hindsight.vectorize.io](https://hindsight.vectorize.io/)
+  - GitHub Repository: [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)
+  - Cloud Console: [ui.hindsight.vectorize.io](https://ui.hindsight.vectorize.io)
+- **Groq** (Fast LLM Inference)
+  - Website: [groq.com](https://groq.com/)
+  - Model Used: `openai/gpt-oss-120b` (Optimized for function calling)
+
+---
+
+## 🧠 Architecture
 
 ```mermaid
 graph TD
     A[Customer Chat UI] -->|Message| B(FastAPI Backend)
     B --> C{Hindsight Memory}
     C -->|Recall Past Fixes & Context| B
-    B --> D[Groq LLM / Llama-3]
+    B --> D[Groq LLM / openai/gpt-oss-120b]
     D -->|Tool Calls| E[(Mock DB / KB / Ticketing)]
     E --> D
     D -->|Reply| B
@@ -32,17 +53,19 @@ graph TD
     B -->|Reply + Memory Context| A
 ```
 
-## How Hindsight Is Used
+## 🧠 How Hindsight Is Used
 
-ResolveMind integrates Hindsight at the core of its reasoning loop:
+Elephant integrates Hindsight at the core of its reasoning loop:
 
 1. **Memory Banks:** Each customer has a dedicated Hindsight Bank (`bank_id = customer_id`) ensuring strict isolation of personal history.
-2. **Pre-Response Recall:** When a message arrives, the agent calls `Hindsight.recall(query)` to fetch the top 3 relevant facts (e.g., past failures regarding invoice syncing).
-3. **Post-Response Retain:** After responding, a lightweight LLM (Llama-3.1-8B) analyzes the transcript to extract 1-3 concise facts (e.g., "Customer attempted cache clear for QuickBooks sync, outcome: failed"). These are stored via `Hindsight.retain()`.
+2. **Pre-Response Recall:** When a message arrives, the agent calls `Hindsight.recall(query)` to fetch the top relevant facts (e.g., past failures regarding invoice syncing).
+3. **Post-Response Retain:** After responding, a lightweight extraction prompt analyzes the transcript to extract concise facts (e.g., "Customer attempted cache clear for QuickBooks sync, outcome: failed"). These are stored via `Hindsight.retain()`.
 
 By extracting *structured facts* rather than raw transcripts, the memory remains high-signal and avoids clutter.
 
-## Setup & Running
+---
+
+## 🚀 Setup & Running Locally
 
 1. **Virtual Environment:**
    ```bash
@@ -52,9 +75,13 @@ By extracting *structured facts* rather than raw transcripts, the memory remains
    ```
 
 2. **Configuration:**
-   Copy `.env.example` to `.env` and add your keys:
-   - `GROQ_API_KEY`: Get from console.groq.com
-   - `HINDSIGHT_API_KEY`: Get from Vectorize Hindsight
+   Create a `.env` file in the root directory and add your keys:
+   ```env
+   GROQ_API_KEY=gsk_...
+   HINDSIGHT_API_KEY=eyJ...
+   HINDSIGHT_BASE_URL=
+   GROQ_MODEL=openai/gpt-oss-120b
+   ```
 
 3. **Seed Data:**
    Run the seed scripts to generate mock data and populate Hindsight:
@@ -71,18 +98,3 @@ By extracting *structured facts* rather than raw transcripts, the memory remains
    uvicorn backend.main:app --reload
    ```
    Open `http://127.0.0.1:8000` in your browser.
-
-## Evaluation
-
-Run the evaluation script to see a comparison of Stateless vs Hindsight mode:
-```bash
-cd eval
-python3 run_eval.py
-```
-
-## Deployment (Render / Hugging Face Spaces)
-
-This app is designed to be easily deployed on a free host:
-1. Create a `Procfile` with: `web: uvicorn backend.main:app --host 0.0.0.1 --port $PORT`
-2. Set environment variables (`GROQ_API_KEY`, `HINDSIGHT_API_KEY`) in the host settings.
-3. The frontend is served statically by FastAPI, so no build step is required!

@@ -1,0 +1,31 @@
+{
+  "invoices": [
+    {
+      "id": "INV-1001",
+      "customer_id": "hero_priya",
+      "status": "failed_sync",
+      "amount": 1500.0,
+      "date": "10 days ago"
+    },
+    {
+      "id": "INV-1002",
+      "customer_id": "hero_priya",
+      "status": "failed_sync",
+      "amount": 1500.0,
+      "date": "2 days ago"
+    },
+    {
+      "id": "INV-1003",
+      "customer_id": "cust_01",
+      "status": "paid",
+      "amount": 5000.0,
+      "date": "15 days ago"
+    }
+  ],
+  "status_page": {
+    "active_incident": true,
+    "incident_title": "Intermittent sync delays with QuickBooks",
+    "severity": "minor",
+    "description": "We are currently seeing intermittent delays when syncing invoices to QuickBooks Online. Reconnecting the integration does not resolve this. Engineering is investigating."
+  }
+}

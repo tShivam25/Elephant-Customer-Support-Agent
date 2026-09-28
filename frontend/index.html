@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elephant - AI Agent with Hindsight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar: Customers -->
+        <aside class="sidebar">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Trunk curving down on the left, connecting to middle -->
+                        <path d="M 12 4 C 4 4 2 10 3 16 C 4 21 8 23 10 21 C 11 20 11 19 9.5 18 C 8 17 6 15 7 12 L 12 12" />
+                        <!-- E bars and stem -->
+                        <path d="M 12 4 L 20 4 M 12 4 L 12 20 L 20 20 M 12 12 L 18 12" />
+                    </svg>
+                </div>
+                <h2>Elephant</h2>
+            </div>
+            <div class="sidebar-header">
+                <h3>Customers</h3>
+            </div>
+            <div class="customer-list" id="customer-list">
+                <!-- Customers loaded here -->
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="header-info">
+                    <h1 id="current-customer-name">Select a Customer</h1>
+                    <span class="plan-badge" id="current-customer-plan">Plan</span>
+                </div>
+                <div class="header-controls">
+                    <div class="toggle-container">
+                        <span class="toggle-label">Stateless</span>
+                        <label class="switch">
+                            <input type="checkbox" id="memory-toggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label highlight">Hindsight Memory</span>
+                    </div>
+                    <button id="demo-btn" class="btn primary">Run Demo</button>
+                    <button id="theme-toggle" class="btn icon-btn">☀</button>
+                </div>
+            </header>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="empty-state">
+                    <div class="glow-circle"></div>
+                    <h2>Welcome to Elephant</h2>
+                    <p>Select a customer and start chatting to see Hindsight in action.</p>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="quick-replies" id="quick-replies">
+                    <button class="chip">Invoice sync failed again</button>
+                    <button class="chip">I'm locked out</button>
+                </div>
+                <form id="chat-form" class="chat-form">
+                    <input type="text" id="chat-input" placeholder="Message agent..." autocomplete="off">
+                    <button type="submit" class="btn primary send-btn">Send</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Agent Brain Panel -->
+        <aside class="brain-panel">
+            <div class="brain-header">
+                <h2>Agent Brain</h2>
+                <div class="pulse"></div>
+            </div>
+            
+            <div class="brain-tabs">
+                <button class="tab-btn active" data-tab="profile">Profile</button>
+                <button class="tab-btn" data-tab="memories">Memories</button>
+                <button class="tab-btn" data-tab="tools">Tools</button>
+            </div>
+
+            <div class="tab-content active" id="tab-profile">
+                <div class="card" id="profile-card">
+                    <p>No customer selected.</p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-memories">
+                <div class="section-title">Memories Used</div>
+                <div id="memories-used-list" class="list"></div>
+                
+                <div class="section-title mt-4">Facts Stored (This Turn)</div>
+                <div id="facts-stored-list" class="list"></div>
+            </div>
+
+            <div class="tab-content" id="tab-tools">
+                <div class="section-title">Decision Summary</div>
+                <p id="decision-summary" class="summary-text text-muted">-</p>
+                
+                <div class="section-title mt-4">Tools Used</div>
+                <div id="tools-used-list" class="list timeline"></div>
+            </div>
+        </aside>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

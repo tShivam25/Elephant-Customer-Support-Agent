@@ -1,0 +1,231 @@
+[
+  {
+    "id": "hero_priya",
+    "name": "Priya Nair",
+    "company": "DesignSync",
+    "plan": "Pro",
+    "environment": "Mac, QuickBooks",
+    "preference": "email",
+    "tone": "mildly frustrated",
+    "tickets": [
+      {
+        "date": "10 days ago",
+        "issue": "Invoice sync to QuickBooks failed",
+        "fix_attempted": "Reconnect integration",
+        "outcome": "failed",
+        "sentiment": "neutral"
+      },
+      {
+        "date": "2 days ago",
+        "issue": "Invoice sync to QuickBooks failed",
+        "fix_attempted": "Clear cache",
+        "outcome": "failed",
+        "sentiment": "mildly frustrated"
+      }
+    ]
+  },
+  {
+    "id": "cust_01",
+    "name": "Alex Mercer",
+    "company": "TechNova",
+    "plan": "Enterprise",
+    "environment": "Windows, NetSuite",
+    "preference": "slack",
+    "tone": "direct",
+    "tickets": [
+      {
+        "date": "30 days ago",
+        "issue": "API rate limit exceeded",
+        "fix_attempted": "Increase rate limit temporarily",
+        "outcome": "worked",
+        "sentiment": "happy"
+      }
+    ]
+  },
+  {
+    "id": "cust_02",
+    "name": "Sarah Jenkins",
+    "company": "BakeShop Inc",
+    "plan": "Starter",
+    "environment": "Windows, Xero",
+    "preference": "phone",
+    "tone": "friendly",
+    "tickets": [
+      {
+        "date": "15 days ago",
+        "issue": "Duplicate charges on invoice",
+        "fix_attempted": "Refund duplicate",
+        "outcome": "worked",
+        "sentiment": "relieved"
+      }
+    ]
+  },
+  {
+    "id": "cust_03",
+    "name": "John Doe",
+    "company": "Acme Corp",
+    "plan": "Pro",
+    "environment": "Linux, Custom ERP",
+    "preference": "email",
+    "tone": "frustrated",
+    "tickets": [
+      {
+        "date": "17 days ago",
+        "issue": "Login SSO failed",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "happy"
+      },
+      {
+        "date": "24 days ago",
+        "issue": "Export errors to CSV",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "neutral"
+      },
+      {
+        "date": "24 days ago",
+        "issue": "Refund processing error",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "cust_04",
+    "name": "Jane Smith",
+    "company": "Globex",
+    "plan": "Enterprise",
+    "environment": "Windows, NetSuite",
+    "preference": "phone",
+    "tone": "casual",
+    "tickets": [
+      {
+        "date": "20 days ago",
+        "issue": "Tax settings incorrect",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "frustrated"
+      }
+    ]
+  },
+  {
+    "id": "cust_05",
+    "name": "Alice Johnson",
+    "company": "Initech",
+    "plan": "Starter",
+    "environment": "Linux, Custom ERP",
+    "preference": "email",
+    "tone": "frustrated",
+    "tickets": [
+      {
+        "date": "29 days ago",
+        "issue": "Export errors to CSV",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "neutral"
+      },
+      {
+        "date": "23 days ago",
+        "issue": "Login SSO failed",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "frustrated"
+      },
+      {
+        "date": "10 days ago",
+        "issue": "Tax settings incorrect",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "happy"
+      }
+    ]
+  },
+  {
+    "id": "cust_06",
+    "name": "Bob Williams",
+    "company": "Umbrella Corp",
+    "plan": "Pro",
+    "environment": "Linux, Custom ERP",
+    "preference": "slack",
+    "tone": "casual",
+    "tickets": [
+      {
+        "date": "10 days ago",
+        "issue": "Login SSO failed",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "happy"
+      },
+      {
+        "date": "29 days ago",
+        "issue": "Refund processing error",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "happy"
+      }
+    ]
+  },
+  {
+    "id": "cust_07",
+    "name": "Charlie Brown",
+    "company": "Stark Ind",
+    "plan": "Starter",
+    "environment": "Linux, Custom ERP",
+    "preference": "phone",
+    "tone": "polite",
+    "tickets": [
+      {
+        "date": "19 days ago",
+        "issue": "Refund processing error",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "frustrated"
+      }
+    ]
+  },
+  {
+    "id": "cust_08",
+    "name": "Diana Prince",
+    "company": "Wayne Ent",
+    "plan": "Pro",
+    "environment": "Windows, NetSuite",
+    "preference": "phone",
+    "tone": "urgent",
+    "tickets": [
+      {
+        "date": "18 days ago",
+        "issue": "Export errors to CSV",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "cust_09",
+    "name": "Eve Adams",
+    "company": "Wonka Ind",
+    "plan": "Enterprise",
+    "environment": "Windows, Xero",
+    "preference": "email",
+    "tone": "casual",
+    "tickets": [
+      {
+        "date": "6 days ago",
+        "issue": "Export errors to CSV",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "failed",
+        "sentiment": "neutral"
+      },
+      {
+        "date": "9 days ago",
+        "issue": "Tax settings incorrect",
+        "fix_attempted": "Standard troubleshooting",
+        "outcome": "worked",
+        "sentiment": "neutral"
+      }
+    ]
+  }
+]

@@ -2,7 +2,7 @@
 
 *Because an Elephant never forgets.*
 
-**Created for the Hack with Hyderabad 3.0 Hackathon**
+**Live Demo:** [https://elephant-customer-support-agent.vercel.app/](https://elephant-customer-support-agent.vercel.app/)
 
 Elephant is a next-generation customer support AI designed for a SaaS billing/invoicing company. It integrates **Hindsight by Vectorize** to build an adaptive, memory-augmented intelligence that gets smarter with every customer interaction.
 
@@ -26,7 +26,7 @@ Nothing angers a customer more than repeating their story. By utilizing a persis
 
 ## 🛠 Technology & Resources Used
 
-This project heavily utilizes the following technologies required by the hackathon:
+This project heavily utilizes the following technologies:
 
 - **Hindsight by Vectorize** (Memory Layer)
   - Documentation: [hindsight.vectorize.io](https://hindsight.vectorize.io/)

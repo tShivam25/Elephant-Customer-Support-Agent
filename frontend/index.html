@@ -1,85 +1,155 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elephant - AI Agent with Hindsight</title>
+    <title>Elephant - Customer Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="logo.png?v=7" alt="Elephant Logo">
+        </div>
+    </div>
     <div class="app-container">
-        <!-- Sidebar: Customers -->
+        
+        <!-- Left Sidebar -->
         <aside class="sidebar">
             <div class="brand-header">
-                <div class="brand-logo">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- Trunk curving down on the left, connecting to middle -->
-                        <path d="M 12 4 C 4 4 2 10 3 16 C 4 21 8 23 10 21 C 11 20 11 19 9.5 18 C 8 17 6 15 7 12 L 12 12" />
-                        <!-- E bars and stem -->
-                        <path d="M 12 4 L 20 4 M 12 4 L 12 20 L 20 20 M 12 12 L 18 12" />
-                    </svg>
-                </div>
+                <div class="brand-icon"><img src="logo.png?v=7" alt="Elephant Logo"></div>
                 <h2>Elephant</h2>
+                <div class="brand-action">⊞</div>
             </div>
-            <div class="sidebar-header">
-                <h3>Customers</h3>
+            
+            <div class="search-box">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" placeholder="Search customers...">
             </div>
-            <div class="customer-list" id="customer-list">
-                <!-- Customers loaded here -->
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <span class="icon">💬</span> All conversations
+                    <span class="badge blue">12</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">✉️</span> Unread
+                    <span class="badge">4</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">⭐</span> Priority
+                    <span class="badge">2</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">🤖</span> AI handled
+                    <span class="badge">8</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">👤</span> Human needed
+                    <span class="badge">1</span>
+                </a>
+            </nav>
+
+            <div class="customers-section">
+                <div class="section-title">CUSTOMERS</div>
+                <div class="customer-list" id="customer-list">
+                    <!-- Customers dynamically injected here by JS -->
+                </div>
             </div>
         </aside>
 
         <!-- Main Chat Area -->
         <main class="chat-area">
             <header class="chat-header">
-                <div class="header-info">
-                    <h1 id="current-customer-name">Select a Customer</h1>
-                    <span class="plan-badge" id="current-customer-plan">Plan</span>
+                <div class="customer-info-header">
+                    <div class="avatar">PN</div>
+                    <div class="details">
+                        <h1 id="current-customer-name">Priya Nair</h1>
+                        <span class="status online">● Online</span>
+                        <div class="sub-details">
+                            <span id="current-customer-company">DesignSync</span> • 
+                            <span id="current-customer-plan">Pro Plan</span> • 
+                            <span>Customer since Mar 2025</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="header-controls">
-                    <div class="toggle-container">
-                        <span class="toggle-label">Stateless</span>
+                <div class="header-actions">
+                    <button class="btn icon-btn">⋯</button>
+                    <button class="btn outline-btn" id="demo-btn">▶ Run Demo</button>
+                    <button class="btn ai-active-btn">✨ AI Active</button>
+                    <div class="memory-dropdown">
                         <label class="switch">
                             <input type="checkbox" id="memory-toggle" checked>
                             <span class="slider round"></span>
                         </label>
-                        <span class="toggle-label highlight">Hindsight Memory</span>
+                        <span>Hindsight Memory ⌄</span>
                     </div>
-                    <button id="demo-btn" class="btn primary">Run Demo</button>
-                    <button id="theme-toggle" class="btn icon-btn">☀</button>
+                    <button id="theme-toggle" style="display:none;">☀</button>
                 </div>
             </header>
-            
+
+            <div class="ai-brief-banner">
+                <div class="brief-header">
+                    <span>✨ AI Brief</span>
+                    <a href="#">View details ⌄</a>
+                </div>
+                <div class="brief-grid">
+                    <div class="brief-item">
+                        <label>Customer needs</label>
+                        <p>Invoice correction</p>
+                    </div>
+                    <div class="brief-item">
+                        <label>Previous issue</label>
+                        <p>Invoice mismatch <span class="time">14 days ago</span></p>
+                    </div>
+                    <div class="brief-item">
+                        <label>Preferred resolution</label>
+                        <p>Email confirmation</p>
+                    </div>
+                    <div class="brief-item">
+                        <label>Sentiment</label>
+                        <p>😐 Neutral</p>
+                    </div>
+                    <div class="brief-item">
+                        <label>Priority</label>
+                        <p>🟠 Medium</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="chat-messages" id="chat-messages">
+                <!-- Messages will go here -->
                 <div class="empty-state">
-                    <div class="glow-circle"></div>
-                    <h2>Welcome to Elephant</h2>
-                    <p>Select a customer and start chatting to see Hindsight in action.</p>
+                    <h2>Select a Customer to Begin</h2>
                 </div>
             </div>
 
             <div class="chat-input-container">
-                <div class="quick-replies" id="quick-replies">
-                    <button class="chip">Invoice sync failed again</button>
-                    <button class="chip">I'm locked out</button>
+                <div class="input-suggestions" id="quick-replies">
+                    <span>✨ Suggested replies</span>
+                    <div class="suggestion-chips">
+                        <button class="chip">Check next billing date</button>
+                        <button class="chip">Send payment details</button>
+                        <button class="chip">Explain invoice</button>
+                    </div>
                 </div>
                 <form id="chat-form" class="chat-form">
-                    <input type="text" id="chat-input" placeholder="Message agent..." autocomplete="off">
-                    <button type="submit" class="btn primary send-btn">Send</button>
+                    <input type="text" id="chat-input" placeholder="Ask Elephant anything..." autocomplete="off">
+                    <div class="input-actions">
+                        <button type="button" class="btn icon-btn">📎</button>
+                        <button type="button" class="btn icon-btn">📖 Memory</button>
+                        <button type="button" class="btn icon-btn">⚡ Agent Mode ⌄</button>
+                        <button type="submit" class="btn primary-btn" style="display:none">Send</button>
+                    </div>
                 </form>
             </div>
         </main>
 
-        <!-- Agent Brain Panel -->
-        <aside class="brain-panel">
-            <div class="brain-header">
-                <h2>Agent Brain</h2>
-                <div class="pulse"></div>
-            </div>
-            
+        <!-- Right Context Panel (Agent Brain) -->
+        <aside class="context-panel">
             <div class="brain-tabs">
                 <button class="tab-btn active" data-tab="profile">Profile</button>
                 <button class="tab-btn" data-tab="memories">Memories</button>
@@ -87,28 +157,61 @@
             </div>
 
             <div class="tab-content active" id="tab-profile">
-                <div class="card" id="profile-card">
-                    <p>No customer selected.</p>
+                <!-- Profile content -->
+                <div class="panel-section">
+                    <div class="section-title">CUSTOMER</div>
+                    <div class="profile-card" id="profile-card">
+                        Select a customer.
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <div class="section-title">CONTACT</div>
+                    <div class="contact-item">✉ <span id="contact-email">priya@designsync.com</span> 📋</div>
+                    <div class="contact-item">📞 <span id="contact-phone">+91 98765 43210</span> 📋</div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-title">PREFERENCES</div>
+                    <ul class="preferences-list">
+                        <li>Prefers email communication</li>
+                        <li>Likes detailed explanations</li>
+                        <li>Billing contact</li>
+                    </ul>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-title">TAGS</div>
+                    <div class="tags-container">
+                        <span class="tag blue">Billing</span>
+                        <span class="tag purple">Pro Plan</span>
+                        <span class="tag orange">Priority</span>
+                    </div>
                 </div>
             </div>
 
             <div class="tab-content" id="tab-memories">
-                <div class="section-title">Memories Used</div>
-                <div id="memories-used-list" class="list"></div>
-                
-                <div class="section-title mt-4">Facts Stored (This Turn)</div>
-                <div id="facts-stored-list" class="list"></div>
+                <div class="panel-section">
+                    <div class="section-title">Memories Used</div>
+                    <div id="memories-used-list" class="list"></div>
+                    
+                    <div class="section-title mt-4">Facts Stored (This Turn)</div>
+                    <div id="facts-stored-list" class="list"></div>
+                </div>
             </div>
 
             <div class="tab-content" id="tab-tools">
-                <div class="section-title">Decision Summary</div>
-                <p id="decision-summary" class="summary-text text-muted">-</p>
-                
-                <div class="section-title mt-4">Tools Used</div>
-                <div id="tools-used-list" class="list timeline"></div>
+                <div class="panel-section">
+                    <div class="section-title">Decision Summary</div>
+                    <p id="decision-summary" class="summary-text text-muted">-</p>
+                    
+                    <div class="section-title mt-4">Tools Used</div>
+                    <div id="tools-used-list" class="list timeline"></div>
+                </div>
             </div>
         </aside>
+
     </div>
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>

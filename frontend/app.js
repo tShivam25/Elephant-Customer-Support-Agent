@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Splash Screen Animation (Logo only)
+    const splashScreen = document.getElementById('splash-screen');
+    
+    // Hide splash screen after 1.5 seconds
+    setTimeout(() => {
+        splashScreen.style.opacity = '0';
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+        }, 500); // Wait for fade out transition
+    }, 1500);
+
     const customerList = document.getElementById('customer-list');
     const chatMessages = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');
